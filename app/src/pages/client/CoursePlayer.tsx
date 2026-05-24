@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  ChevronLeft, CheckCircle2, PlayCircle, 
-  Lock, FileText, ArrowRight, Loader2, Menu
+  ChevronLeft, CheckCircle2,
+FileText, ArrowRight, Loader2, Menu
 } from 'lucide-react';
 import { trainingsAPI, progressAPI } from '@/services/api';
 import { Button } from '@/components/ui/button';

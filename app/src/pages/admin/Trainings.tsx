@@ -1,9 +1,9 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Plus, Search, Trash2, Edit2, Loader2, X, 
-  Upload, ImageIcon, BookOpen, Users, Video, FileText, 
-  CheckCircle2, Layout, MoreVertical, Archive, Eye
+ Plus, Search, Trash2, Edit2, Loader2, X,
+Upload, ImageIcon, Users, Video,
+CheckCircle2, Layout, MoreVertical
 } from 'lucide-react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 
@@ -143,14 +143,15 @@ const handleDelete = (id: number) => {
 
   const addModule = () => {
     const newModule: Module = {
-      id: Date.now(), // Temporaire pour le front
-      title: 'Nouveau Module',
-      content_text: '',
-      video_url: '',
-      exercise_content: '',
-      unlock_condition: 'previous_completed',
-      order: formData.modules.length + 1
-    };
+  id: Date.now(),
+  training_id: selectedTraining?.id || 0,
+  title: 'Nouveau Module',
+  content_text: '',
+  video_url: '',
+  exercise_content: '',
+  unlock_condition: 'previous_completed',
+  order: formData.modules.length + 1
+};
     setFormData(prev => ({ ...prev, modules: [...prev.modules, newModule] }));
   };
 
@@ -271,7 +272,9 @@ const handleDelete = (id: number) => {
                   </div>
                 </TableCell>
                 <TableCell>
-                  <div className="font-bold text-[#1a237e]">{training.price.toLocaleString()} FCFA</div>
+                  <div className="font-bold text-[#1a237e]">
+  {(training.price ?? 0).toLocaleString()} FCFA
+</div>
                 </TableCell>
                 <TableCell className="text-right">
                   <DropdownMenu>

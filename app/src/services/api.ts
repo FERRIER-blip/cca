@@ -1,3 +1,4 @@
+import type { Testimonial } from "@/types"
 import axios from 'axios';
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
 const api = axios.create({
@@ -138,4 +139,5 @@ export const adminAPI = {
   toggleUserStatus: (id: number) => api.put(`/admin/users/${id}/toggle-status`),
   toggleUserAdmin: (id: number) => api.put(`/admin/users/${id}/toggle-admin`),
   deleteUser: (id: number) => api.delete(`/admin/users/${id}`),
+  getRecentActivities: () => api.get('/admin/recent-activities'),
 };
