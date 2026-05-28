@@ -1,4 +1,16 @@
 // --- Types de base ---
+export interface Testimonial {
+  id: number;
+  rating: number;
+  author_name: string;
+  author_title: string;
+  author_company: string;
+  content: string;
+  image_url?: string; // Uniformisé
+  is_approved: boolean;
+  is_featured: boolean;
+}
+
 export interface User {
   id: number;
   email: string;
@@ -11,7 +23,15 @@ export interface User {
   created_at: string;
 }
 
-export interface Domain { id: number; name: string; slug: string; description: string; icon: string; order: number; is_active: boolean; }
+export interface Domain { 
+  id: number; 
+  name: string; 
+  slug: string; 
+  description: string; 
+  icon: string; 
+  order: number; 
+  is_active: boolean; 
+}
 
 // --- LMS / Trainings ---
 export interface Module {
@@ -43,7 +63,7 @@ export interface Training {
   updated_at: string;
 }
 
-// --- Modèles enrichis (Correction des erreurs) ---
+// --- Modèles enrichis ---
 export interface Service { 
   id: number; 
   title: string; 
@@ -55,70 +75,54 @@ export interface Service {
   is_active: boolean; 
 }
 
-export interface Testimonial {
-  id: number;
-  rating: number;
-  author_name: string;
-  author_title: string;
-  author_company: string;
-  name: string;      // Parfois utilisé dans le code
-  role: string;      // Parfois utilisé dans le code
-  content: string;
-  image?: string;
-  is_approved: boolean;
-  is_featured: boolean;
-}
-
 export interface Partner { 
   id: number; 
   name: string; 
-  logo_url: string; // Ajouté
-  website?: string; // Ajouté
+  logo_url: string; 
+  website?: string; 
 }
 
 export interface Expert { 
   id: number; 
-  name: string; 
-  first_name: string; // Ajouté
-  last_name: string;  // Ajouté
+  first_name: string; 
+  last_name: string; 
   role: string; 
-  title?: string;     // Ajouté
+  title?: string; 
   bio: string; 
-  photo_url?: string; // Ajouté
-  image_url?: string; // Ajouté
+  image_url?: string; // Uniformisé (suppression de photo_url)
 }
 
 export interface News { 
   id: number; 
   title: string; 
-  slug: string;       // Ajouté
+  slug: string; 
   content: string; 
-  excerpt?: string;   // Ajouté
-  image_url?: string; // Ajouté
+  excerpt?: string; 
+  image_url?: string; 
   created_at: string; 
-  published_at?: string; // Ajouté
-  is_published: boolean; // Ajouté
+  published_at?: string; 
+  is_published: boolean; 
 }
 
 export interface ContactMessage { 
   id: number; 
   name: string; 
   email: string; 
-  subject?: string;   // Ajouté
+  subject?: string; 
   message: string; 
-  phone?: string;     // Ajouté
-  is_read: boolean;   // Ajouté
-  created_at: string; // Ajouté
+  phone?: string; 
+  is_read: boolean; 
+  created_at: string; 
 }
 
 export interface ServiceRequest { 
   id: number; 
   service_id: number; 
-  contact_name: string; // Ajouté
-  contact_email: string; // Ajouté
-  contact_phone?: string; // Ajouté
-  company?: string;      // Ajouté
-  message: string;      // Ajouté
+  contact_name: string; 
+  contact_email: string; 
+  contact_phone?: string; 
+  company?: string; 
+  message: string; 
   status: string; 
 }
 
@@ -132,7 +136,6 @@ export interface DashboardStats {
   recent_enrollments: number;
 }
 
-// Assurez-vous que ces exports sont présents et non commentés
 export interface ModuleProgress {
   id: number;
   module_id: number;
@@ -149,4 +152,11 @@ export interface Enrollment {
   enrolled_at: string;
   completed_at?: string;
   training: Training;
+}
+
+export interface Expert {
+  id: number;
+  name: string;
+  title?: string;
+  photo_url?: string;
 }

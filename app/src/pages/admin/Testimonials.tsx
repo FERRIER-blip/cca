@@ -59,7 +59,6 @@ export default function AdminTestimonials() {
 
   return (
     <div className="space-y-6 max-w-5xl mx-auto p-4">
-
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -69,7 +68,6 @@ export default function AdminTestimonials() {
           <h1 className="text-3xl font-bold text-[#1a237e]">Témoignages</h1>
           <p className="text-gray-500">Gérez les avis clients et la mise en avant sur le site.</p>
         </div>
-
         <div className="text-sm font-medium text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
           {testimonials?.length || 0} avis au total
         </div>
@@ -82,7 +80,6 @@ export default function AdminTestimonials() {
         </div>
       ) : (
         <div className="grid gap-4">
-
           <AnimatePresence mode="popLayout">
             {testimonials?.map((t) => (
               <motion.div
@@ -95,33 +92,24 @@ export default function AdminTestimonials() {
                   t.is_approved ? 'border-gray-100' : 'border-amber-200 bg-amber-50/30'
                 }`}
               >
-
-                {/* HEADER */}
                 <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
-
                   <div className="flex gap-4">
-
                     <div className="hidden sm:flex h-12 w-12 rounded-full bg-gray-100 items-center justify-center shrink-0">
                       <Quote className="w-6 h-6 text-gray-300" />
                     </div>
-
                     <div>
-
                       <div className="flex items-center gap-2">
                         <p className="font-bold text-gray-900 text-lg">
                           {t.author_name}
                         </p>
-
                         {t.is_featured && (
                           <Trophy className="w-4 h-4 text-blue-600 fill-blue-600" />
                         )}
                       </div>
-
                       <p className="text-sm text-gray-500 font-medium italic">
                         {t.author_title}
                         {t.author_company && ` @ ${t.author_company}`}
                       </p>
-
                       <div className="flex gap-0.5 mt-1.5">
                         {Array.from({ length: 5 }).map((_, i) => (
                           <Star
@@ -134,10 +122,8 @@ export default function AdminTestimonials() {
                           />
                         ))}
                       </div>
-
                     </div>
                   </div>
-
                   <div className="flex flex-wrap gap-2 items-center shrink-0">
                     <span
                       className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
@@ -149,19 +135,14 @@ export default function AdminTestimonials() {
                       {t.is_approved ? 'Public' : 'En attente'}
                     </span>
                   </div>
-
                 </div>
 
-                {/* CONTENT */}
                 <div className="mt-4 text-gray-700 leading-relaxed bg-gray-50/50 p-4 rounded-xl border border-gray-50">
                   "{t.content}"
                 </div>
 
-                {/* ACTIONS */}
                 <div className="mt-6 flex flex-wrap justify-between items-center gap-4 border-t pt-4">
-
                   <div className="flex gap-2">
-
                     <Button
                       size="sm"
                       variant={t.is_approved ? "outline" : "default"}
@@ -175,7 +156,6 @@ export default function AdminTestimonials() {
                       )}
                       {t.is_approved ? 'Retirer du site' : 'Approuver'}
                     </Button>
-
                     <Button
                       size="sm"
                       variant="outline"
@@ -185,9 +165,7 @@ export default function AdminTestimonials() {
                       <Trophy className="w-3 h-3 mr-2" />
                       {t.is_featured ? 'Vedette' : 'Mettre en vedette'}
                     </Button>
-
                   </div>
-
                   <Button
                     size="sm"
                     variant="ghost"
@@ -202,12 +180,10 @@ export default function AdminTestimonials() {
                     <Trash2 className="w-4 h-4 mr-2" />
                     Supprimer
                   </Button>
-
                 </div>
               </motion.div>
             ))}
           </AnimatePresence>
-
         </div>
       )}
 

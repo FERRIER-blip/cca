@@ -12,6 +12,7 @@ export default function AdminExperts() {
   const queryClient = useQueryClient();
   const fileInputRef = useRef<HTMLInputElement>(null);
   
+  // --- ÉTATS ---
   const [searchQuery, setSearchQuery] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedExpert, setSelectedExpert] = useState<Expert | null>(null);
@@ -25,11 +26,13 @@ export default function AdminExperts() {
     bio: '',
   });
 
+  // --- QUERIES ---
   const { data: experts, isLoading } = useQuery<Expert[]>({
     queryKey: ['admin-experts'],
     queryFn: async () => (await expertsAPI.getAll()).data,
   });
 
+  // --- MUTATIONS ---
   const saveMutation = useMutation({
     mutationFn: (data: FormData) => 
       selectedExpert 
@@ -51,6 +54,7 @@ export default function AdminExperts() {
     },
   });
 
+  // --- HANDLERS ---
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -61,15 +65,15 @@ export default function AdminExperts() {
     }
   };
 
-  const handleEdit = (expert: any) => {
+  const handleEdit = (expert: Expert) => {
     setSelectedExpert(expert);
     setFormData({
-      first_name: expert.first_name || expert.name || '', 
-      last_name: expert.last_name || '',
-      title: expert.title || expert.role || '',
-      bio: expert.bio || '',
+      first_name: expert.first_name,
+      last_name: expert.last_name,
+      title: expert.title ?? '',
+      bio: expert.bio,
     });
-    setImagePreview(expert.photo_url || expert.image_url || null);
+    setImagePreview(expert.photo_url || null);
     setIsModalOpen(true);
   };
 
@@ -90,21 +94,23 @@ export default function AdminExperts() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Utilisation de FormData pour envoyer le fichier
     const data = new FormData();
     data.append('first_name', formData.first_name);
     data.append('last_name', formData.last_name);
     data.append('title', formData.title);
     data.append('bio', formData.bio);
     if (selectedFile) {
-      data.append('photo', selectedFile); 
+      data.append('photo', selectedFile); // Le nom 'photo' doit correspondre à votre backend
     }
+
     saveMutation.mutate(data);
   };
 
-  const filtered = experts?.filter(e => {
-    const fullName = e.name ? e.name : `${e.first_name} ${e.last_name}`;
-    return fullName.toLowerCase().includes(searchQuery.toLowerCase());
-  }) || [];
+  const filtered = experts?.filter(e =>
+    `${e.first_name} ${e.last_name}`.toLowerCase().includes(searchQuery.toLowerCase())
+  ) || [];
 
   return (
     <div className="space-y-6 p-4">
@@ -115,12 +121,7 @@ export default function AdminExperts() {
 
       <div className="relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-        <input 
-          placeholder="Rechercher..." 
-          value={searchQuery} 
-          onChange={e => setSearchQuery(e.target.value)} 
-          className="pl-10 w-full h-10 border rounded-md" 
-        />
+        <Input placeholder="Rechercher..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)} className="pl-10" />
       </div>
 
       {isLoading ? (
@@ -131,34 +132,21 @@ export default function AdminExperts() {
             <motion.div key={expert.id} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 rounded-full bg-gray-100 overflow-hidden">
-                  {(expert.photo_url || expert.image_url) ? (
-                    <img src={expert.photo_url || expert.image_url} alt="" className="w-full h-full object-cover" />
+                  {expert.photo_url ? (
+                    <img src={expert.photo_url} alt="" className="w-full h-full object-cover" />
                   ) : (
                     <User className="w-full h-full p-2 text-gray-400" />
                   )}
                 </div>
                 <div>
-                  <p className="font-bold">
-                    {expert.name ? expert.name : `${expert.first_name} ${expert.last_name}`}
-                  </p>
-                  <p className="text-sm text-[#ff6f00]">
-                    {expert.role || expert.title}
-                  </p>
+                  <p className="font-bold">{expert.first_name} {expert.last_name}</p>
+                  <p className="text-sm text-[#ff6f00]">{expert.title}</p>
                 </div>
               </div>
               <p className="text-gray-600 text-sm mb-4 line-clamp-2 flex-grow">{expert.bio}</p>
               <div className="flex gap-2">
-                <Button size="sm" variant="outline" className="flex-1" onClick={() => handleEdit(expert)}>
-                  <Edit2 className="w-3 h-3 mr-1" /> Modifier
-                </Button>
-                <Button 
-                   size="sm" 
-                   variant="outline" 
-                   className="text-red-500" 
-                   onClick={() => window.confirm('Supprimer ?') && deleteMutation.mutate(expert.id)}
-                >
-                  <Trash2 className="w-3 h-3" />
-                </Button>
+                <Button size="sm" variant="outline" className="flex-1" onClick={() => handleEdit(expert)}><Edit2 className="w-3 h-3 mr-1" /> Modifier</Button>
+                <Button size="sm" variant="outline" className="text-red-500" onClick={() => confirm('Supprimer ?') && deleteMutation.mutate(expert.id)}><Trash2 className="w-3 h-3" /></Button>
               </div>
             </motion.div>
           ))}
@@ -173,6 +161,7 @@ export default function AdminExperts() {
               <h2 className="text-xl font-bold mb-4">{selectedExpert ? 'Modifier' : 'Ajouter'}</h2>
 
               <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Zone de téléchargement d'image */}
                 <div className="flex flex-col items-center justify-center border-2 border-dashed border-gray-200 rounded-lg p-4 bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer" onClick={() => fileInputRef.current?.click()}>
                   {imagePreview ? (
                     <div className="relative w-24 h-24">
