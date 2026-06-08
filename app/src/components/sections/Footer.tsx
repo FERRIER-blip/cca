@@ -154,7 +154,7 @@ export default function Footer() {
                 className="flex items-center gap-3"
               >
                 <Phone className="w-5 h-5 text-[#ff6f00] flex-shrink-0" />
-                <span className="text-white/70 text-sm">+235 66 00 00 00</span>
+                <span className="text-white/70 text-sm">+235 66 28 42 93</span>
               </motion.li>
               <motion.li
                 initial={{ opacity: 0, x: -10 }}

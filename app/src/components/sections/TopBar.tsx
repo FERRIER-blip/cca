@@ -17,7 +17,7 @@ export default function TopBar() {
           >
             <Phone className="w-4 h-4" />
           </motion.div>
-          <span className="text-sm">+235 66 00 00 00</span>
+          <span className="text-sm">+235 66 28 42 93</span>
         </div>
         <a
           href="/contact"

@@ -8,7 +8,7 @@ const stats = [
   { value: 150, suffix: '+', label: 'Projets réalisés' },
   { value: 50, suffix: '+', label: 'Experts formés' },
   { value: 10, suffix: '+', label: "Années d'expérience" },
-  { value: 98, suffix: '%', label: 'Clients satisfaits' },
+  { value: 100, suffix: '%', label: 'Clients satisfaits' },
 ];
 
 function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
@@ -57,6 +57,7 @@ export default function About() {
     <section ref={containerRef} className="py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
+
           {/* Image */}
           <motion.div
             style={{ y: imageY }}
@@ -72,10 +73,10 @@ export default function About() {
               <img
                 src="/images/about-team.jpg"
                 alt="CCA Team"
-                className="w-full h-[600px] object-cover"
+                className="w-full h-[70px] md:h-[600px] object-cover"
               />
               {/* Decorative overlay */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#1a237e]/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#1a237e]/10 to-transparent" />
             </motion.div>
 
             {/* Decorative Line */}
@@ -84,7 +85,7 @@ export default function About() {
               whileInView={{ pathLength: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="absolute -right-8 top-1/2 w-16 h-0.5 bg-[#ff6f00]"
+              className="absolute -right-4 top-1/2 w-16 h-0.5 bg-[#ff6f00]"
             />
 
   {/* Floating Badge */}
@@ -199,7 +200,6 @@ export default function About() {
           </motion.div>
         </div>
 
-{/* Stats */}
         {/* Stats */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-20">
           {stats.map((stat, index) => (

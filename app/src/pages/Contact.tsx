@@ -10,7 +10,7 @@ import { contactAPI } from '@/services/api';
 
 const contactInfo = [
   { icon: MapPin, title: 'Adresse', content: "Gassi, 7ème arrondissement, N'Djaména, Tchad" },
-  { icon: Phone, title: 'Téléphone', content: '+235 66 00 00 00' },
+  { icon: Phone, title: 'Téléphone', content: '+235 66 28 42 93' },
   { icon: Mail, title: 'Email', content: 'contact@cca-td.com' },
   { icon: Clock, title: 'Horaires', content: 'Lun - Ven: 8h00 - 17h00' },
 ];
