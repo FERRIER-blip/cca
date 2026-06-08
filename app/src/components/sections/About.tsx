@@ -59,35 +59,35 @@ export default function About() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
 
           {/* Image */}
-          <motion.div
-            style={{ y: imageY }}
-            className="relative"
-          >
-            <motion.div
-              initial={{ opacity: 0, x: -100, rotateY: 10 }}
-              whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="relative rounded-2xl overflow-hidden shadow-2xl"
-            >
-              <img
-                src="/images/about-team.jpg"
-                alt="CCA Team"
-                className="w-full h-[70px] md:h-[600px] object-cover"
-              />
-              {/* Decorative overlay */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#1a237e]/10 to-transparent" />
-            </motion.div>
+<motion.div
+  style={{ y: imageY }}
+  className="relative"
+>
+  <motion.div
+    initial={{ opacity: 0, x: -100, rotateY: 10 }}
+    whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+    className="relative rounded-2xl overflow-hidden shadow-2xl"
+  >
+    <img
+      src="/images/about-team.jpg"
+      alt="CCA Team"
+      className="w-full h-[300px] md:h-[600px] object-cover"
+    />
+    {/* Decorative overlay */}
+    <div className="absolute inset-0 bg-gradient-to-tr from-[#1a237e]/10 to-transparent" />
+  </motion.div>
 
-            {/* Decorative Line */}
-            <motion.div
-              initial={{ pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="absolute -right-4 top-1/2 w-16 h-0.5 bg-[#ff6f00]"
-            />
-
+  {/* Decorative Line */}
+  <motion.div
+    initial={{ pathLength: 0 }}
+    whileInView={{ pathLength: 1 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.8, delay: 0.5 }}
+    className="absolute -right-4 top-1/2 w-16 h-0.5 bg-[#ff6f00]"
+  />
+</motion.div>
   {/* Floating Badge */}
 
 <motion.div

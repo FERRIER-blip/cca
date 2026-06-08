@@ -158,5 +158,5 @@ export interface Expert {
   id: number;
   name: string;
   title?: string;
-  photo_url?: string;
+  photo_url?: string; 
 }
