@@ -57,11 +57,11 @@ export default function About() {
     <section ref={containerRef} className="py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          
+
 {/* Image */}
 <motion.div
   style={{ y: imageY }}
-  className="relative"
+  className="relative overflow-x-hidden"
 >
   <motion.div
     initial={{ opacity: 0, x: -100, rotateY: 10 }}
@@ -73,19 +73,19 @@ export default function About() {
     <img
       src="/images/about-team.jpg"
       alt="CCA Team"
-      className="w-full h-[300px] md:h-[600px] object-cover"
+      className="w-full h-[250px] md:h-[600px] object-cover"
     />
     {/* Decorative overlay */}
     <div className="absolute inset-0 bg-gradient-to-tr from-[#1a237e]/10 to-transparent" />
   </motion.div>
 
-  {/* Decorative Line - Corrigé : masqué sur mobile, visible uniquement sur desktop */}
+  {/* Decorative Line */}
   <motion.div
     initial={{ pathLength: 0 }}
     whileInView={{ pathLength: 1 }}
     viewport={{ once: true }}
     transition={{ duration: 0.8, delay: 0.5 }}
-    className="absolute -right-4 top-1/2 w-16 h-0.5 bg-[#ff6f00] hidden md:block"
+    className="absolute -right-4 top-1/2 w-16 h-0.5 bg-[#ff6f00]"
   />
 </motion.div>
 
