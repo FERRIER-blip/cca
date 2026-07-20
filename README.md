@@ -2,8 +2,6 @@
 
 ## ✅ Connexion Frontend ↔ Backend — TERMINÉE
 
----
-
 ## 🏗️ Architecture
 
 ```
@@ -46,9 +44,7 @@ cca-project/
     ├── .env                ← Variables d'environnement
     ├── seed.py             ← Script d'initialisation des données
     └── cca_database.db     ← Base SQLite (créée automatiquement)
-```
 
----
 
 ## 🚀 Démarrage
 
@@ -64,18 +60,9 @@ uvicorn app.main:app --reload --port 8000
 ```bash
 cd app
 npm install
-npm run dev             # http://localhost:5173
+npm run dev           
 ```
 
----
-
-## 🔐 Comptes de démonstration
-
-| Rôle          | Email                 | Mot de passe   |
-|---------------|-----------------------|----------------|
-| Administrateur| admin@cca-td.com      | Admin@2024!    |
-
----
 
 ## 🔗 Endpoints API
 
@@ -97,9 +84,8 @@ npm run dev             # http://localhost:5173
 | GET     | /api/admin/dashboard           | Stats admin (admin requis)     |
 | GET     | /api/admin/users               | Gestion utilisateurs           |
 
-Documentation interactive Swagger : **http://localhost:8000/docs**
 
----
+
 
 ## ⚙️ Corrections apportées
 
