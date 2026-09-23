@@ -1,5 +1,7 @@
 # CCA — Cabinet Construire l'Avenir — Site Web Complet
 
+Le Cabinet Construire l’Avenir (CCA) est un cabinet d’expertise et de conseil dans divers domaines, notamment juridique, administratif et de communication. Notre équipe de professionnels qualifiés et expérimentés met son expertise au service de votre réussite
+
 ## ✅ Connexion Frontend ↔ Backend — TERMINÉE
 
 ## 🏗️ Architecture
