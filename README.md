@@ -2,8 +2,6 @@
 
 Le Cabinet Construire l’Avenir (CCA) est un cabinet d’expertise et de conseil dans divers domaines, notamment juridique, administratif et de communication. Notre équipe de professionnels qualifiés et expérimentés met son expertise au service de votre réussite
 
-## ✅ Connexion Frontend ↔ Backend — TERMINÉE
-
 ## 🏗️ Architecture
 
 ```
@@ -48,22 +46,6 @@ cca-project/
     └── cca_database.db     ← Base SQLite (créée automatiquement)
 
 
-## 🚀 Démarrage
-
-### 1. Backend (terminal 1)
-```bash
-cd backend
-pip install fastapi uvicorn sqlalchemy "pydantic[email]" pydantic-settings python-jose passlib python-multipart
-python seed.py          # Données de démo + admin
-uvicorn app.main:app --reload --port 8000
-```
-
-### 2. Frontend (terminal 2)
-```bash
-cd app
-npm install
-npm run dev           
-```
 
 
 ## 🔗 Endpoints API
@@ -87,15 +69,3 @@ npm run dev
 | GET     | /api/admin/users               | Gestion utilisateurs           |
 
 
-
-
-## ⚙️ Corrections apportées
-
-1. **Login OAuth2** — Le frontend envoyait du JSON ; FastAPI attend du `application/x-www-form-urlencoded`. Corrigé dans `api.ts`.
-2. **Ordre des routes FastAPI** — `/enroll` et `/my/enrollments` placés **avant** `/{slug}` pour éviter le conflit de routing.
-3. **Toutes les sections de la page d'accueil** — `Services`, `Trainings`, `Testimonials`, `Partners` utilisent maintenant `useQuery` + API.
-4. **Pages publiques** — `Services`, `Trainings`, `News` + pages de détail toutes connectées.
-5. **Panel Admin** — `Dashboard`, `Services`, `Trainings`, `News`, `Messages`, `Users`, `Experts`, `Testimonials`, `Partners`, `ServiceRequests` tous connectés.
-6. **Espace Client** — `Dashboard`, `Profile`, `Trainings` (avec inscription en 1 clic) connectés.
-7. **Page Contact** — Formulaire soumis réellement via `POST /api/contact/message`.
-8. **Base de données** — Script `seed.py` pour pré-remplir toutes les collections avec des données de démo.
